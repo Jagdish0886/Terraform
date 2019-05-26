@@ -1,1 +1,1 @@
-S3_bucket_name = "terraform-bucket-055090"
+S3_bucket_prefix = "awslearning"

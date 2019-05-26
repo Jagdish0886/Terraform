@@ -1,11 +1,12 @@
 resource "aws_s3_bucket" "main" {
-  bucket = "${var.S3_bucket_name}"
+  bucket = "${var.S3_bucket_prefix}-${var.environment}-${var.s3_region[0]}"
   acl    = "private"
 
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
+  tags = "${local.s3_tags}"
 
   region = "${var.s3_region[0]}"
+
+  lifecycle{
+    prevent_destroy = "true"
+  }
 }
